@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Creneaux;
+use App\Models\Slots;
 use Illuminate\Http\Request;
 
-class CreneauxController extends Controller
+class SlotsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class CreneauxController extends Controller
      */
     public function index()
     {
-        $creneaux = Creneaux::all();
+        $slots = Slots::all();
 
-        return view('creneaux.index', [
-            'creneaux' => $creneaux
+        return view('dashboard', [
+            'slots' => $slots
         ]);
     }
 

@@ -15,7 +15,7 @@ class CreateOrdinateursTable extends Migration
     {
         Schema::create('ordinateurs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom');
+            $table->string('nom')->unique();
             $table->integer('etat')->default('1');
             $table->timestamps();
         });

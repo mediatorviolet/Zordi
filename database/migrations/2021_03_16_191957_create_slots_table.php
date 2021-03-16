@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCreneauxTable extends Migration
+class CreateSlotsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCreneauxTable extends Migration
      */
     public function up()
     {
-        Schema::create('creneaux', function (Blueprint $table) {
+        Schema::create('slots', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('utilisateur_id');
             $table->unsignedInteger('ordinateur_id');
@@ -39,6 +39,6 @@ class CreateCreneauxTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('creneauxes');
+        Schema::dropIfExists('slots');
     }
 }

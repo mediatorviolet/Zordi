@@ -29,3 +29,6 @@ au choix. Il est important d’avoir un design agréable et ergonomique.
 - Lien du repo git (Github, Gitlab, Bitbucket,..)
 - Lien vers l’application en ligne et information de connexion (identifiant et mot de passe)
 - Lien tableau Kanban avec le découpage des tâches (Trello, Jira, Framaboard,..)
+
+## Schéma BDD
+![alt text](public/images/Schema_BDD.png)

@@ -39,9 +39,12 @@ class OrdinateursController extends Controller
      */
     public function store(Request $request)
     {
-        $ordinateurs = Ordinateurs::create([
-            'nom' => $request->input('nom')
+        // Form validation
+        $validated = $request->validate([
+            'nom' => 'required|unique:ordinateurs'
         ]);
+
+        $validated = Ordinateurs::create();
 
         return redirect('/ordinateurs');
     }

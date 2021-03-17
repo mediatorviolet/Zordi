@@ -21,7 +21,7 @@
                         </p>
                     </div>
                     <div class="col-span-3 row-span-2">
-                        <table class="table-fixed w-full mb-6">
+                        <table class="table-fixed w-full">
                             <tbody>
                                 @forelse ($utilisateurs as $utilisateur)
                                     <tr class="py-2 flex justify-between border-b-2 mt-2">

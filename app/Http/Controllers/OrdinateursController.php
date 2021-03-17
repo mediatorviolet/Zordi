@@ -44,7 +44,9 @@ class OrdinateursController extends Controller
             'nom' => 'required|unique:ordinateurs'
         ]);
 
-        $validated = Ordinateurs::create();
+        Ordinateurs::create([
+            'nom' => $request->input('nom')
+        ]);
 
         return redirect('/ordinateurs');
     }

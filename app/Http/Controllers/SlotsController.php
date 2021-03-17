@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ordinateurs;
 use App\Models\Slots;
+use App\Models\Utilisateurs;
 use Illuminate\Http\Request;
 
 class SlotsController extends Controller
@@ -14,9 +16,9 @@ class SlotsController extends Controller
      */
     public function index()
     {
-        $slots = Slots::all();
+        $slots = Slots::paginate(10);
 
-        return view('dashboard', [
+        return view('creneaux.index', [
             'slots' => $slots
         ]);
     }
@@ -28,7 +30,13 @@ class SlotsController extends Controller
      */
     public function create()
     {
-        //
+        $ordinateurs = Ordinateurs::where('etat', '=', 1)->get();
+        $utilisateurs = Utilisateurs::where('etat', '=', 1)->get();
+
+        return view('creneaux.create', [
+            'ordinateurs' => $ordinateurs,
+            'utilisateurs' => $utilisateurs
+        ]);
     }
 
     /**

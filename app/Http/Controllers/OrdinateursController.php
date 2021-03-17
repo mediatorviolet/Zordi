@@ -14,7 +14,7 @@ class OrdinateursController extends Controller
      */
     public function index()
     {
-        $ordinateurs = Ordinateurs::all();
+        $ordinateurs = Ordinateurs::paginate(10);
 
         return view('ordinateurs.index', [
             'ordinateurs' => $ordinateurs

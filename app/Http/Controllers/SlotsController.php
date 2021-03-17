@@ -47,7 +47,15 @@ class SlotsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'ordinateur' => 'required',
+            'utilisateur' => 'required',
+            'date' => 'required|date_format:Y-m-d|after_or_equal:today',
+            'heure_debut' => 'required|date_format:H:i|after_or_equal:10:00',
+            'heure_fin' => 'required|date_format:H:i|after:heure_debut'
+        ]);
+
+        dd($validated);
     }
 
     /**

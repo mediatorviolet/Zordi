@@ -12,86 +12,75 @@
                     <form action="/slots" method="post">
                         @csrf
                         <div class="grid grid-cols-1 gap-6">
+
                             <label class="block">
-                                <span class="text-gray-700">Poste</span>
-                                <select name=""
-                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700">
-                                    <option value="">Sélectionnez un poste</option>
+                                <span class="text-gray-700">Ordinateur</span>
+                                <select name="ordinateur"
+                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('ordinateur') is-invalid @enderror">
+                                    <option value="">Sélectionnez un ordinateur</option>
                                     @foreach ($ordinateurs as $ordinateur)
-                                        <option value="">{{ $ordinateur->nom }}</option>
+                                        <option value="{{ $ordinateur->id }}">{{ $ordinateur->nom }}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->any())
+                                @error('ordinateur')
                                     <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
+                                        {{ $message }}
                                     </div>
-                                @endif
+                                @enderror
                             </label>
+
                             <label class="block">
                                 <span class="text-gray-700">Utilisateur</span>
-                                <select name=""
-                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700">
+                                <select name="utilisateur"
+                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('utilisateur') is-invalid @enderror">
                                     <option value="">Sélectionnez un utilisateur</option>
                                     @foreach ($utilisateurs as $utilisateur)
-                                        <option value="">{{ $utilisateur->nom }}</option>
+                                        <option value="{{ $utilisateur->id }}">{{ $utilisateur->nom }}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->any())
+                                @error('utilisateur')
                                     <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
+                                        {{ $message }}
                                     </div>
-                                @endif
+                                @enderror
                             </label>
+
                             <label class="block">
                                 <span class="text-gray-700">Date</span>
-                                <input type="date" name=""
-                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700">
-                                @if ($errors->any())
+                                <input type="date" name="date"
+                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('date') is-invalid @enderror"
+                                    value="{{ old('date') }}">
+                                @error('date')
                                     <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
+                                        {{ $message }}
                                     </div>
-                                @endif
+                                @enderror
                             </label>
+
                             <label class="block">
                                 <span class="text-gray-700">Heure de début</span>
-                                <input type="time" name=""
-                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700">
-                                @if ($errors->any())
+                                <input type="time" name="heure_debut"
+                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('heure_debut') is-invalid @enderror"
+                                    value="{{ old('heure_debut') }}">
+                                @error('heure_debut')
                                     <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
+                                        {{ $message }}
                                     </div>
-                                @endif
+                                @enderror
                             </label>
+
                             <label class="block">
                                 <span class="text-gray-700">Heure de fin</span>
-                                <input type="time" name=""
-                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700">
-                                @if ($errors->any())
+                                <input type="time" name="heure_fin"
+                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('heure_fin') is-invalid @enderror"
+                                    value="{{ old('heure_fin') }}">
+                                @error('heure_fin')
                                     <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
+                                        {{ $message }}
                                     </div>
-                                @endif
+                                @enderror
                             </label>
+
                         </div>
                         <button type="submit"
                             class="bg-indigo-500 rounded-xl px-4 py-2 text-gray-100 mt-6 hover:bg-indigo-700 transition duration-150 ease-in-out">

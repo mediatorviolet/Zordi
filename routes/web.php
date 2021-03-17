@@ -20,18 +20,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth']);
-
-Route::resource('/dashboard', SlotsController::class)->middleware(['auth']);
+Route::resource('/slots', SlotsController::class)->middleware(['auth']);
 
 Route::resource('/ordinateurs', OrdinateursController::class)->middleware(['auth']);
 
 Route::resource('/utilisateurs', UtilisateursController::class)->middleware(['auth']);
-
-Route::get('/home', function () {
-    return view('home');
-})->middleware(['auth'])->name('home');
 
 require __DIR__ . '/auth.php';

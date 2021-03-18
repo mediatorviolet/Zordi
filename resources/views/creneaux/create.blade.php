@@ -58,23 +58,14 @@
                             </label>
 
                             <label class="block">
-                                <span class="text-gray-700">Heure de début</span>
-                                <input type="time" name="heure_debut"
-                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('heure_debut') is-invalid @enderror"
-                                    value="{{ old('heure_debut') }}">
-                                @error('heure_debut')
-                                    <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </label>
-
-                            <label class="block">
-                                <span class="text-gray-700">Heure de fin</span>
-                                <input type="time" name="heure_fin"
-                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('heure_fin') is-invalid @enderror"
-                                    value="{{ old('heure_fin') }}">
-                                @error('heure_fin')
+                                <span class="text-gray-700">Plage horaire</span>
+                                <select name="horaire" class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('horaire') is-invalid @enderror">
+                                    <option value="">Selectionnez une plage horaire</option>
+                                    @foreach ($horaires as $horaire)
+                                        <option value="{{ $horaire->id }}">{{ $horaire->plage_horaire }}</option>
+                                    @endforeach
+                                </select>
+                                @error('horaire')
                                     <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
                                         {{ $message }}
                                     </div>

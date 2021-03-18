@@ -17,9 +17,8 @@ class CreateSlotsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('utilisateur_id');
             $table->unsignedInteger('ordinateur_id');
+            $table->unsignedInteger('horaire_id');
             $table->date('date');
-            $table->time('heure_debut');
-            $table->time('heure_fin');
             $table->foreign('utilisateur_id')
                 ->references('id')
                 ->on('utilisateurs')
@@ -28,6 +27,9 @@ class CreateSlotsTable extends Migration
                 ->references('id')
                 ->on('ordinateurs')
                 ->onDelete('cascade');
+            $table->foreign('horaire_id')
+                ->references('id')
+                ->on('horaires');
             $table->timestamps();
         });
     }

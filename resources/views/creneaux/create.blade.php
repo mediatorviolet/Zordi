@@ -14,28 +14,14 @@
                         <div class="grid grid-cols-1 gap-6">
 
                             <label class="block">
-                                <span class="text-gray-700">Ordinateur</span>
-                                <select name="ordinateur"
-                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('ordinateur') is-invalid @enderror">
-                                    <option value="">Sélectionnez un ordinateur</option>
-                                    @foreach ($ordinateurs as $ordinateur)
-                                        <option value="{{ $ordinateur->id }}">{{ $ordinateur->nom }}</option>
-                                    @endforeach
-                                </select>
-                                @error('ordinateur')
-                                    <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </label>
-
-                            <label class="block">
                                 <span class="text-gray-700">Utilisateur</span>
                                 <select name="utilisateur"
                                     class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('utilisateur') is-invalid @enderror">
                                     <option value="">Sélectionnez un utilisateur</option>
                                     @foreach ($utilisateurs as $utilisateur)
-                                        <option value="{{ $utilisateur->id }}">{{ $utilisateur->nom }}</option>
+                                        <option value="{{ $utilisateur->id }}"
+                                            {{ old('utilisateur') == $utilisateur->id ? 'selected' : '' }}>
+                                            {{ $utilisateur->nom }}</option>
                                     @endforeach
                                 </select>
                                 @error('utilisateur')
@@ -59,13 +45,37 @@
 
                             <label class="block">
                                 <span class="text-gray-700">Plage horaire</span>
-                                <select name="horaire" class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('horaire') is-invalid @enderror">
+                                <select name="horaire"
+                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('horaire') is-invalid @enderror">
                                     <option value="">Selectionnez une plage horaire</option>
-                                    @foreach ($horaires as $horaire)
-                                        <option value="{{ $horaire->id }}">{{ $horaire->plage_horaire }}</option>
-                                    @endforeach
+                                    @forelse ($horaires as $horaire)
+                                        <option value="{{ $horaire->id }}"
+                                            {{ old('horaire') == $horaire->id ? 'selected' : '' }}>
+                                            {{ $horaire->plage_horaire }}
+                                        </option>
+                                    @empty
+                                        <option value="">Aucune plage horaire disponible à cette date</option>
+                                    @endforelse
                                 </select>
                                 @error('horaire')
+                                    <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </label>
+
+                            <label class="block">
+                                <span class="text-gray-700">Ordinateur</span>
+                                <select name="ordinateur"
+                                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('ordinateur') is-invalid @enderror">
+                                    <option id="choixOrdi" value="">Sélectionnez un ordinateur</option>
+                                    {{-- @foreach ($ordinateurs as $ordinateur)
+                                        <option value="{{ $ordinateur->id }}"
+                                            {{ old('ordinateur') == $ordinateur->id ? 'selected' : '' }}>
+                                            {{ $ordinateur->nom }}</option>
+                                    @endforeach --}}
+                                </select>
+                                @error('ordinateur')
                                     <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
                                         {{ $message }}
                                     </div>
@@ -83,3 +93,4 @@
         </div>
     </div>
 </x-app-layout>
+<script src="{{ asset('js/slots.js') }}" defer></script>

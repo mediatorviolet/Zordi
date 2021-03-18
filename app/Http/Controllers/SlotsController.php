@@ -29,11 +29,32 @@ class SlotsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $ordinateurs = Ordinateurs::where('etat', '=', 1)->get();
         $utilisateurs = Utilisateurs::where('etat', '=', 1)->get();
         $horaires = Horaire::all();
+
+        if ($request->ajax()) {
+            $d = date('Y-m-d', strtotime($_GET['d']));
+            $h = intval($_GET['h']);
+
+            $ordiNonDispo = Slots::where([
+                ['date', '=', $d],
+                ['horaire_id', '=', $h]
+            ])->get();
+
+            if ($ordiNonDispo->isEmpty()) {
+                return response($ordinateurs, 200);
+            } else {
+                $list = Ordinateurs::where('etat', 1);
+                foreach ($ordiNonDispo as $ordi) {
+                    $list->where('id', '<>', $ordi->ordinateur_id);
+                }
+                $result = $list->get();
+                return response($result, 200);
+            }
+        }
 
         return view('creneaux.create', [
             'ordinateurs' => $ordinateurs,
@@ -57,7 +78,14 @@ class SlotsController extends Controller
             'horaire' => 'required'
         ]);
 
-        dd($validated);
+        Slots::create([
+            'utilisateur_id' => $request->input('utilisateur'),
+            'ordinateur_id' => $request->input('ordinateur'),
+            'horaire_id' => $request->input('horaire'),
+            'date' => $request->input('date')
+        ]);
+
+        return redirect('/slots');
     }
 
     /**

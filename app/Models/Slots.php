@@ -12,9 +12,8 @@ class Slots extends Model
     public $fillable = [
         'utilisateur_id',
         'ordinateur_id',
-        'date',
-        'heure_debut',
-        'heure_fin'
+        'horaire_id',
+        'date'
     ];
 
     /**
@@ -22,7 +21,7 @@ class Slots extends Model
      */
     public function ordinateur()
     {
-        return $this->hasOne(Ordinateurs::class, 'foreign_key');
+        return $this->belongsTo(Ordinateurs::class);
     }
 
     /**
@@ -30,6 +29,10 @@ class Slots extends Model
      */
     public function utilisateur()
     {
-        return $this->hasOne(Utilisateurs::class, 'foreign_key');
+        return $this->belongsTo(Utilisateurs::class);
+    }
+
+    public function horaire() {
+        return $this->belongsTo(Horaire::class);
     }
 }

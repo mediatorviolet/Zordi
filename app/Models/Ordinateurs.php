@@ -13,4 +13,8 @@ class Ordinateurs extends Model
         'nom',
         'etat'
     ];
+
+    public function slot() {
+        return $this->hasOne(Slots::class);
+    }
 }

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Horaire extends Model
 {
     use HasFactory;
+
+    public $fillable = [
+        'plage_horaire'
+    ];
+
+    public function slot() {
+        return $this->hasOne(Slots::class);
+    }
 }

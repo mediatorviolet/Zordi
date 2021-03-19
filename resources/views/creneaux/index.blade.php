@@ -24,30 +24,32 @@
                         <table class="table-fixed w-full">
                             <tbody>
                                 @forelse ($slots as $slot)
-                                    <tr class="py-2 flex justify-between border-b-2 mt-2">
-                                        <td class="text-gray-600">
-                                            {{ $slot->utilisateur->nom }}
-                                        </td>
-                                        <td class="text-gray-600">
-                                            {{ $slot->ordinateur->nom }}
-                                        </td>
-                                        <td class="text-gray-600">
-                                            {{ $slot->horaire->plage_horaire }}
-                                        </td>
-                                        <td class="text-gray-600">
-                                            {{ date('d/m/Y', strtotime($slot->date)) }}
-                                        </td>
-                                        <td>
-                                            <form action="slots/{{ $slot->id }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="text-gray-800 hover:text-red-500 transition duration-150 ease-in-out">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                    @if ($slot->ordinateur->etat === 1 && $slot->utilisateur->etat === 1)
+                                        <tr class="py-2 flex justify-between border-b-2 mt-2">
+                                            <td class="text-gray-600">
+                                                {{ $slot->utilisateur->nom }}
+                                            </td>
+                                            <td class="text-gray-600">
+                                                {{ $slot->ordinateur->nom }}
+                                            </td>
+                                            <td class="text-gray-600">
+                                                {{ $slot->horaire->plage_horaire }}
+                                            </td>
+                                            <td class="text-gray-600">
+                                                {{ date('d/m/Y', strtotime($slot->date)) }}
+                                            </td>
+                                            <td>
+                                                <form action="slots/{{ $slot->id }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="text-gray-800 hover:text-red-500 transition duration-150 ease-in-out">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @empty
                                     <p class="text-gray-400">Aucun créneau</p>
                                 @endforelse

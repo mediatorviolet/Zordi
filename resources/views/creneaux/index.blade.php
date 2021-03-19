@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Créneaux.
+            Créneaux
         </h2>
     </x-slot>
 
@@ -25,20 +25,20 @@
                             <tbody>
                                 @forelse ($slots as $slot)
                                     @if ($slot->ordinateur->etat === 1 && $slot->utilisateur->etat === 1)
-                                        <tr class="py-2 flex justify-between border-b-2 mt-2">
-                                            <td class="text-gray-600">
+                                        <tr class="py-2 grid md:grid-cols-5 grid-cols-auto border-b-2 mt-2">
+                                            <td class="text-gray-600 md:col-span-1 col-span-2 md:text-left text-center">
                                                 {{ $slot->utilisateur->nom }}
                                             </td>
-                                            <td class="text-gray-600">
+                                            <td class="text-gray-600 flex items-center justify-center md:justify-end">
                                                 {{ $slot->ordinateur->nom }}
                                             </td>
-                                            <td class="text-gray-600">
+                                            <td class="text-gray-600 flex items-center justify-center md:justify-end">
                                                 {{ $slot->horaire->plage_horaire }}
                                             </td>
-                                            <td class="text-gray-600">
+                                            <td class="text-gray-600 flex items-center justify-center md:justify-end">
                                                 {{ date('d/m/Y', strtotime($slot->date)) }}
                                             </td>
-                                            <td>
+                                            <td class="flex items-center justify-center md:justify-end">
                                                 <form action="slots/{{ $slot->id }}" method="post">
                                                     @csrf
                                                     @method('DELETE')

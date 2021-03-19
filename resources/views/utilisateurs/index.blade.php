@@ -24,11 +24,11 @@
                         <table class="table-fixed w-full mb-6">
                             <tbody>
                                 @forelse ($utilisateurs as $utilisateur)
-                                    <tr class="py-2 flex justify-between border-b-2 mt-2">
+                                    <tr class="py-2 grid grid-cols-4 border-b-2 mt-2">
                                         <td class="text-gray-600">
                                             {{ $utilisateur->nom }}
                                         </td>
-                                        <td>
+                                        <td class="flex items-center justify-center md:justify-end">
                                             @if ($utilisateur->etat == 1)
                                                 <span
                                                     class="px-2 inline-flex leading-5 rounded-full bg-green-100 text-green-800">
@@ -41,13 +41,13 @@
                                                 </span>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="flex items-center justify-center md:justify-end">
                                             <a href="utilisateurs/{{ $utilisateur->id }}/edit"
                                                 class="border-b-2 border-transparent text-indigo-500 hover:font-semibold hover:border-indigo-700 hover:text-indigo-700 transition duration-150 ease-in-out">
                                                 Modifier
                                             </a>
                                         </td>
-                                        <td>
+                                        <td class="flex items-center justify-center md:justify-end">
                                             <form action="utilisateurs/{{ $utilisateur->id }}" method="post">
                                                 @csrf
                                                 @method('DELETE')

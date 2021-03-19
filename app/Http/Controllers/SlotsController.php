@@ -130,6 +130,7 @@ class SlotsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Slots::where('id', $id)->delete();
+        return redirect('/slots');
     }
 }

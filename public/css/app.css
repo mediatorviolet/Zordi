@@ -28207,6 +28207,10 @@ select {
   grid-template-rows: none;
 }
 
+.grid-rows-custom {
+  grid-template-rows: 15% 1fr 1fr;
+}
+
 .auto-rows-auto {
   grid-auto-rows: auto;
 }
@@ -58915,6 +58919,10 @@ select {
     grid-template-rows: none;
   }
 
+  .sm\:grid-rows-custom {
+    grid-template-rows: 15% 1fr 1fr;
+  }
+
   .sm\:auto-rows-auto {
     grid-auto-rows: auto;
   }
@@ -89556,6 +89564,10 @@ select {
 
   .md\:grid-rows-none {
     grid-template-rows: none;
+  }
+
+  .md\:grid-rows-custom {
+    grid-template-rows: 15% 1fr 1fr;
   }
 
   .md\:auto-rows-auto {
@@ -120201,6 +120213,10 @@ select {
     grid-template-rows: none;
   }
 
+  .lg\:grid-rows-custom {
+    grid-template-rows: 15% 1fr 1fr;
+  }
+
   .lg\:auto-rows-auto {
     grid-auto-rows: auto;
   }
@@ -150844,6 +150860,10 @@ select {
     grid-template-rows: none;
   }
 
+  .xl\:grid-rows-custom {
+    grid-template-rows: 15% 1fr 1fr;
+  }
+
   .xl\:auto-rows-auto {
     grid-auto-rows: auto;
   }
@@ -181485,6 +181505,10 @@ select {
 
   .\32xl\:grid-rows-none {
     grid-template-rows: none;
+  }
+
+  .\32xl\:grid-rows-custom {
+    grid-template-rows: 15% 1fr 1fr;
   }
 
   .\32xl\:auto-rows-auto {

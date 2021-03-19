@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200 grid grid-cols-3 grid-rows-3">
+                <div class="p-6 bg-white border-b border-gray-200 grid grid-cols-3 grid-rows-custom">
                     <div class="col-span-2">
                         <h3 class="font-semibold text-lg text-gray-800 py-2">Liste des créneaux</h3>
                     </div>
@@ -21,7 +21,7 @@
                         </p>
                     </div>
                     <div class="col-span-3 row-span-2">
-                        <table class="table-fixed w-full">
+                        <table class="table-fixed w-full mb-6">
                             <tbody>
                                 @forelse ($slots as $slot)
                                     @if ($slot->ordinateur->etat === 1 && $slot->utilisateur->etat === 1)

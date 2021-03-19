@@ -47,8 +47,8 @@
                     </a>
                 @endif
 
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
+                <x-button class="bg-indigo-500 hover:bg-indigo-700 transition duration-150 ease-in-out ml-3">
+                    Connexion
                 </x-button>
             </div>
         </form>

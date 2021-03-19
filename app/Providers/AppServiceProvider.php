@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,9 +27,9 @@ class AppServiceProvider extends ServiceProvider
     {
         if(env('REDIRECT_HTTPS'))
         {
-            \URL::forceScheme('https');
+            URL::forceScheme('https');
         }
-        
+
         Schema::defaultStringLength(191);
     }
 }

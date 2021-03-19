@@ -14,7 +14,7 @@ class CreateHorairesTable extends Migration
     public function up()
     {
         Schema::create('horaires', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('plage_horaire');
         });
     }

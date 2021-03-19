@@ -14,6 +14,8 @@ class CreateSlotsTable extends Migration
     public function up()
     {
         Schema::create('slots', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
             $table->unsignedInteger('utilisateur_id');
             $table->unsignedInteger('ordinateur_id');

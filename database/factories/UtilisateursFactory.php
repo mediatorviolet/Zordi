@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Ordinateurs;
+use App\Models\Utilisateurs;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class OrdinateursFactory extends Factory
+class UtilisateursFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Ordinateurs::class;
+    protected $model = Utilisateurs::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class OrdinateursFactory extends Factory
     public function definition()
     {
         return [
-            'nom' => $this->faker->numerify('Poste###')
+            'nom' => $this->faker->name
         ];
     }
 }

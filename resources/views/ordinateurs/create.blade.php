@@ -15,7 +15,7 @@
                             <span class="text-gray-700">Nom du poste</span>
                             <input type="text"
                                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700"
-                                name="nom">
+                                name="nom" autofocus>
                             @if ($errors->any())
                                 <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
                                     <ul>

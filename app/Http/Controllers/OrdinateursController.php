@@ -84,6 +84,10 @@ class OrdinateursController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nom' => 'required|unique:ordinateurs'
+        ]);
+
         $ordinateur = Ordinateurs::where('id', $id)
             ->update([
                 'nom' => $request->input('nom'),

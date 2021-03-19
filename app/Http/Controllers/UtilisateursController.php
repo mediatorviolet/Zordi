@@ -39,6 +39,10 @@ class UtilisateursController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'nom' => 'required'
+        ]);
+
         $utilisateurs = Utilisateurs::create([
             'nom' => $request->input('nom')
         ]);
@@ -79,12 +83,16 @@ class UtilisateursController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nom' => 'required'
+        ]);
+
         $utilisateur = Utilisateurs::where('id', $id)
             ->update([
                 'nom' => $request->input('nom'),
                 'etat' => $request->input('etat')
             ]);
-        
+
         return redirect('/utilisateurs');
     }
 

@@ -15,18 +15,25 @@
                         <label class="block">
                             <span class="text-gray-700">Nom du poste</span>
                             <input type="text"
-                                class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700"
+                                class="mt-0 block w-full px-0.5 border-0 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700 @error('nom') is-invalid @enderror"
                                 name="nom" value="{{ $ordinateur->nom }}">
+                            @error('nom')
+                                <div class="px-2 inline-flex leading-5 rounded-full bg-red-100 text-red-800">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </label>
                         <label class="block mt-4 border-b-2 border-indigo-200 focus:ring-0 focus:border-indigo-700">
                             <span class="text-gray-700">Etat</span>
                             <div class="block mb-2">
                                 <span class="text-gray-700 mr-6">
-                                    <input type="radio" name="etat" id="1" value="1" {{ $ordinateur->etat == 1 ? 'checked' : '' }}>
+                                    <input type="radio" name="etat" id="1" value="1"
+                                        {{ $ordinateur->etat == 1 ? 'checked' : '' }}>
                                     Activer
                                 </span>
                                 <span class="text-gray-700">
-                                    <input type="radio" name="etat" id="0" value="0" {{ $ordinateur->etat == 0 ? 'checked' : '' }}>
+                                    <input type="radio" name="etat" id="0" value="0"
+                                        {{ $ordinateur->etat == 0 ? 'checked' : '' }}>
                                     Désactiver
                                 </span>
                             </div>

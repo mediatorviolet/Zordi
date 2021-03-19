@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ordinateurs;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class OrdinateursController extends Controller
 {
@@ -84,12 +85,15 @@ class OrdinateursController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $ordinateur = Ordinateurs::where('id', $id)->get();
         $request->validate([
-            'nom' => 'required|unique:ordinateurs'
+            'nom' => [
+                'required',
+                Rule::unique('ordinateurs')->ignore($ordinateur[0]->id),
+            ],
         ]);
 
-        $ordinateur = Ordinateurs::where('id', $id)
-            ->update([
+        $ordinateur[0]->update([
                 'nom' => $request->input('nom'),
                 'etat' => $request->input('etat')
             ]);

@@ -93,4 +93,4 @@
         </div>
     </div>
 </x-app-layout>
-<script src="{{ asset('js/slots.js') }}" defer></script>
+<script src="{{ secure_asset('js/slots.js') }}" defer></script>
